@@ -2,6 +2,11 @@ package com.example.keyon.moneymanager.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,19 +24,28 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     GridView gvInfo;
-    String[] titles = new String[] { "新增支出", "新增收入", "我的支出", "我的收入",
-            "数据管理","收支便签","修改密码",  "帮助","登出" };
+    String[] titles = new String[] { "新增支出", "新增收入", "收支便签", "我的支出", "我的收入",
+            "数据管理","修改密码",  "帮助","登出" };
     int[] images = new int[] { R.drawable.addoutaccount,
-            R.drawable.addinaccount, R.drawable.outaccountinfo,
-            R.drawable.inaccountinfo, R.drawable.showinfo,R.drawable.accountflag,
+            R.drawable.addinaccount,R.drawable.accountflag, R.drawable.outaccountinfo,
+            R.drawable.inaccountinfo, R.drawable.showinfo,
             R.drawable.sysset, R.drawable.help,R.drawable.exit };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActionBar actionBar = getSupportActionBar();
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
+                R.drawable.appicon);
+        int bitmapWidth = bitmap.getWidth();
+        int bitmapHeight = bitmap.getHeight();
+        Matrix matrix = new Matrix();
+        matrix.postScale(0.13f, 0.13f);
+        Bitmap resizeBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmapWidth,
+                bitmapHeight, matrix, true);
+        Drawable drawable = new BitmapDrawable(resizeBitmap);
         actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setLogo(R.drawable.icon48px);
+        actionBar.setLogo(drawable);
         actionBar.setDisplayUseLogoEnabled(true);
         setContentView(R.layout.main);
         gvInfo = (GridView) findViewById(R.id.gvInfo);
@@ -51,19 +65,19 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case 2:
-                        intent = new Intent(MainActivity.this, Outaccountinfo.class);
+                        intent = new Intent(MainActivity.this, Accountflag.class);
                         startActivity(intent);
                         break;
                     case 3:
-                        intent = new Intent(MainActivity.this, Inaccountinfo.class);
+                        intent = new Intent(MainActivity.this, Outaccountinfo.class);
                         startActivity(intent);
                         break;
                     case 4:
-                        intent = new Intent(MainActivity.this, Showinfo.class);
+                        intent = new Intent(MainActivity.this, Inaccountinfo.class);
                         startActivity(intent);
                         break;
                     case 5:
-                        intent = new Intent(MainActivity.this,Accountflag.class);
+                        intent = new Intent(MainActivity.this,Showinfo.class);
                         startActivity(intent);
                         break;
                     case 6:

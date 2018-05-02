@@ -29,6 +29,8 @@
         <activity android:name=".activity.Sysset" />
         <activity android:name=".activity.Help" />
         <activity android:name=".activity.TotalChart" />
+        <activity android:name=".activity.alipay" />
+        <activity android:name=".activity.wechat" />
     </application>
 
 </manifest>

@@ -4,6 +4,11 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -34,8 +39,17 @@ public class Showinfo extends AppCompatActivity {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         ActionBar actionBar = getSupportActionBar();
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
+                R.drawable.appicon);
+        int bitmapWidth = bitmap.getWidth();
+        int bitmapHeight = bitmap.getHeight();
+        Matrix matrix = new Matrix();
+        matrix.postScale(0.13f, 0.13f);
+        Bitmap resizeBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmapWidth,
+                bitmapHeight, matrix, true);
+        Drawable drawable = new BitmapDrawable(resizeBitmap);
         actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setLogo(R.drawable.icon48px);
+        actionBar.setLogo(drawable);
         actionBar.setDisplayUseLogoEnabled(true);
         setContentView(R.layout.showinfo);
 
@@ -80,6 +94,7 @@ public class Showinfo extends AppCompatActivity {
                     intent = new Intent(Showinfo.this, FlagManage.class);
                     intent.putExtra(FLAG, strid);
                     startActivity(intent);
+                    finish();
                 }
             }
         });
@@ -111,7 +126,7 @@ public class Showinfo extends AppCompatActivity {
                 strInfos = new String[listFlags.size()];
                 int n = 0;
                 for (Tb_flag tb_flag : listFlags) {
-                    strInfos[n] = tb_flag.getid() + " | " + tb_flag.getFlag();
+                    strInfos[n] = tb_flag.getid() + "|" + tb_flag.getFlag();
                     if (strInfos[n].length() > 15)
                         strInfos[n] = strInfos[n].substring(0, 15) + "……";
                     n++;

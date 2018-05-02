@@ -1,81 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/flagmanage"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#EEEEE0"
+    android:orientation="vertical"
     android:typeface="@font/font"
+    android:background="#EEEEE0"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
     >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:text="便签管理"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvFlagManage"
+        android:layout_width="350dp"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        android:text="请输入便签，最多输入200字"
+        android:textColor="#8C6931"
+        android:textSize="22sp" />
+
+    <EditText
+        android:id="@+id/txtFlagManage"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:background="@drawable/textview_border"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvFlagManage"
+        android:gravity="top"
+        android:lines="10"
+        android:singleLine="false" />
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="3"
-        >
-        <TextView
-            android:layout_width="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:layout_gravity="center"
             android:gravity="center_horizontal"
-            android:text="便签管理"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        >
-        <RelativeLayout android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:padding="5dp"
-            >
-            <TextView android:layout_width="350dp"
-                android:id="@+id/tvFlagManage"
-                android:textSize="23sp"
-                android:text="请输入便签，最多输入200字"
-                android:textColor="#8C6931"
-                android:layout_alignParentRight="true"
-                android:layout_height="wrap_content"
-                />
-            <EditText
-                android:id="@+id/txtFlagManage"
-                android:layout_width="350dp"
-                android:layout_height="400dp"
-                android:layout_below="@id/tvFlagManage"
-                android:gravity="top"
-                android:singleLine="false"
-                />
-        </RelativeLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="3"
-        >
-        <RelativeLayout android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:padding="10dp"
-            >
+            android:padding="10dp">
+
             <Button
                 android:id="@+id/btnFlagManageDelete"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@+id/btnFlagManageEdit"
+                android:layout_marginEnd="55dp"
                 android:text="删除"
-                />
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="55dp" />
+
             <Button
                 android:id="@+id/btnFlagManageEdit"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/btnFlagManageDelete"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="29dp"
                 android:text="修改"
-                android:maxLength="200"
-                />
+                android:layout_marginLeft="55dp"
+                android:layout_alignParentLeft="true" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

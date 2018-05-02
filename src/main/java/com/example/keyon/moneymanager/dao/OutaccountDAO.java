@@ -52,9 +52,7 @@ public class OutaccountDAO {
      * @return
      */
     public Tb_outaccount find(int id) {
-        Cursor cursor = db
-                .rawQuery(
-                        "select _id,money,time,type,address,mark from tb_outaccount where _id = ?",
+        Cursor cursor = db.rawQuery("select _id,money,time,type,address,mark from tb_outaccount where _id = ?",
                         new String[] { String.valueOf(id) });
         if (cursor.moveToNext()){// 遍历查找到的支出信息
             return new Tb_outaccount(

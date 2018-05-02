@@ -18,7 +18,6 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_marginTop="20dp"
-            android:text="支出管理"
             android:textSize="30sp"
             android:textStyle="bold"
             android:layout_height="wrap_content"/>

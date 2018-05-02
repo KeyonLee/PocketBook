@@ -3,6 +3,11 @@ package com.example.keyon.moneymanager.activity;
 import com.example.keyon.moneymanager.R;
 import java.util.List;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +17,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.keyon.moneymanager.dao.InaccountDAO;
 import com.example.keyon.moneymanager.model.Tb_inaccount;
 
@@ -25,8 +32,17 @@ public class Inaccountinfo extends AppCompatActivity {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         ActionBar actionBar = getSupportActionBar();
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
+                R.drawable.appicon);
+        int bitmapWidth = bitmap.getWidth();
+        int bitmapHeight = bitmap.getHeight();
+        Matrix matrix = new Matrix();
+        matrix.postScale(0.13f, 0.13f);
+        Bitmap resizeBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmapWidth,
+                bitmapHeight, matrix, true);
+        Drawable drawable = new BitmapDrawable(resizeBitmap);
         actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setLogo(R.drawable.icon48px);
+        actionBar.setLogo(drawable);
         actionBar.setDisplayUseLogoEnabled(true);
         setContentView(R.layout.inaccountinfo);
         lvinfo = (ListView) findViewById(R.id.lvinaccountinfo);
@@ -57,7 +73,7 @@ public class Inaccountinfo extends AppCompatActivity {
         strInfos = new String[listinfos.size()];
         int m = 0;
         for (Tb_inaccount tb_inaccount : listinfos) {
-            strInfos[m] = tb_inaccount.getid() + " | " + tb_inaccount.getType()
+            strInfos[m] = tb_inaccount.getid() + "|" + tb_inaccount.getType()
                     + " " + String.valueOf(tb_inaccount.getMoney()) + "元     "
                     + tb_inaccount.getTime();
             m++;

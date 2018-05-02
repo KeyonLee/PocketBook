@@ -12,7 +12,8 @@
     <string name="accountflag">收支便签</string>
     <string name="infomanage">收支管理</string>
     <string name="flagmanage">便签管理</string>
-        <string name="help">帮助</string>
-        <string name="chart">统计图表</string>
-    <string name="action_settings">Settings</string>
+    <string name="help">帮助</string>
+    <string name="chart">统计图表</string>
+    <string name="wechat">微信打赏</string>
+    <string name="alipay">支付宝打赏</string>
 </resources>
